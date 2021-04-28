@@ -85,7 +85,7 @@ fun DependencyHandlerScope.integrationTestImplementation(
 }
 
 dependencies {
-    integrationTestImplementation(project)
+    integrationTestImplementation(gradleTestKit())
     integrationTestImplementation(group = "io.github.microutils", name = "kotlin-logging", version = "2.0.4")
     integrationTestImplementation(group = "org.junit.jupiter", name = "junit-jupiter-api", version = "5.7.0")
     integrationTestImplementation(group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.7.0")

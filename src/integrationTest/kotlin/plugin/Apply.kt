@@ -9,7 +9,7 @@ class Apply {
     @Test
     fun successfulApply() {
 
-        val result = GradleRunner.create()
+        GradleRunner.create()
             .withProjectDir(File("dirForIntegrationTest"))
             .withPluginClasspath()
             .withEnvironment(mapOf("CI_JOB_ID" to ""))
