@@ -12,7 +12,7 @@ class Apply {
         GradleRunner.create()
             .withProjectDir(File("dirForIntegrationTest"))
             .withPluginClasspath()
-            .withEnvironment(mapOf("CI_JOB_ID" to ""))
+            .withEnvironment(mapOf("CI_JOB_ID" to "123"))
             .withArguments("test")
             .forwardOutput()
             .build()
