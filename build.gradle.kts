@@ -3,7 +3,7 @@ plugins {
     `kotlin-dsl`
     id("maven-publish")
 
-    // just for example
+    // just for example. In real plugin it's remove
     kotlin("jvm") version "1.4.21"
 }
 
