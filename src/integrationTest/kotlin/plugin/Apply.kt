@@ -1,6 +1,7 @@
 package plugin
 
 import org.gradle.testkit.runner.GradleRunner
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -12,7 +13,17 @@ class Apply {
         GradleRunner.create()
             .withProjectDir(File("dirForIntegrationTest"))
             .withPluginClasspath()
-            .withEnvironment(mapOf("CI_JOB_ID" to "123"))
+            .withArguments("test")
+            .forwardOutput()
+            .build()
+    }
+
+    @Test
+    fun successfulApplyWithOutPluginClasspath() {
+
+        GradleRunner.create()
+            .withProjectDir(File("dirForIntegrationTestWithLocalPush"))
+            //.withPluginClasspath()
             .withArguments("test")
             .forwardOutput()
             .build()

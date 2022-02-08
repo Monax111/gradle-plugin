@@ -4,9 +4,11 @@ plugins {
     id("maven-publish")
 
     // just for example. In real plugin it's remove
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.5.30"
 }
 
+version = "1.0.0"
+group = "mu.plugin"
 
 gradle.startParameter.showStacktrace = ShowStacktrace.ALWAYS_FULL
 
@@ -36,33 +38,9 @@ java {
 
 
 dependencies {
-    implementation(
-        group = "com.bmuschko.docker-spring-boot-application",
-        name = "com.bmuschko.docker-spring-boot-application.gradle.plugin",
-        version = "6.6.1"
-    )
-    implementation(group = "org.sonarqube", name = "org.sonarqube.gradle.plugin", version = "2.8")
-    implementation(
-        group = "io.qameta.allure",
-        name = "io.qameta.allure.gradle.plugin",
-        version = "2.8.1"
-    )
-    implementation(group = "io.github.microutils", name = "kotlin-logging", version = "2.0.4") {
-        exclude(group = "org.jetbrains.kotlin")
-    }
 
     implementation(
-        group = "com.dorongold.task-tree",
-        name = "com.dorongold.task-tree.gradle.plugin",
-        version = "1.5"
-    )
-    implementation(group = "com.squareup.okhttp", name = "okhttp", version = "2.7.5")
-    implementation(group = "com.google.code.gson", name = "gson", version = "2.8.6")
-
-    implementation(
-        group = "org.eclipse.jgit",
-        name = "org.eclipse.jgit",
-        version = "5.10.0.202012080955-r"
+        group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version = "1.19.0"
     )
 
     testImplementation(group = "org.junit.jupiter", name = "junit-jupiter-api", version = "5.7.0")
@@ -104,6 +82,7 @@ val integrationTestTask = tasks.register<Test>("integrationTest") {
     useJUnitPlatform {
         reports.html.isEnabled = false
     }
+    dependsOn(tasks.publishToMavenLocal)
 }
 
 
